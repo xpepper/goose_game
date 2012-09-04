@@ -1,4 +1,4 @@
-goose_game
+Goose Game
 ==========
 
-the goose game kata
+The Goose Game kata. More info [here](http://www.slideshare.net/pierodibello/).
