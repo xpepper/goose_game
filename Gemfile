@@ -1,3 +1,6 @@
+source :gemcutter
+source 'http://gems.github.com'
+
 gem 'bundler'
 gem 'rake'
 
