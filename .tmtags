@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+==	player.rb	/^  def ==(other)$/;"	method	line:17
+GooseGame	goose_game.rb	/^class GooseGame$/;"	class	line:3
+Player	player.rb	/^class Player$/;"	class	line:1
+add_player	goose_game.rb	/^  def add_player(player)$/;"	method	line:9
+already_present	goose_game.rb	/^  def already_present(player)$/;"	method	line:31
+initialize	goose_game.rb	/^  def initialize$/;"	method	line:5
+initialize	player.rb	/^  def initialize(name)$/;"	method	line:4
+is_playing?	goose_game.rb	/^  def is_playing?(player)$/;"	method	line:27
+move	goose_game.rb	/^  def move(player, dice1, dice2)$/;"	method	line:16
+move	player.rb	/^  def move(moves)$/;"	method	line:13
+position	player.rb	/^  def position$/;"	method	line:9
