@@ -3,24 +3,57 @@ class Player
 
   def initialize(name)
     @name = name
-    @position = 0
+    @positions = [0]
   end
 
   def position
-    @position == 0 ? "Partenza" : @position
+    return 63 if bounced?
+    
+    say(@positions.last)
+  end
+  
+  def bounced_position
+    @bounced = false if bounced?
+    position
   end
 
-  def move(moves)
-    @position += moves
+  def previous_position
+    say(@positions[-2])
+  end
+
+  def move(step)
+    new_position = @positions.last + step
+    if new_position > 63
+      new_position = bounces(new_position)
+      @bounced = true
+    else
+      @bounced = false
+    end
+
+    @positions << new_position
   end
 
   def wins?
-    @position == 63
+    @positions.last == 63
   end
 
+  def bounced?
+    @bounced
+  end
+    
   def ==(other)
     return false unless self.class == other.class
     return true if self.name == other.name
   end
 
+
+  private
+
+  def bounces(new_position)
+    63 - new_position % 63
+  end
+
+  def say(position)
+    position.nil? || position == 0 ? "Partenza" : position
+  end
 end

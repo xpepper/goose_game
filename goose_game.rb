@@ -16,12 +16,12 @@ class GooseGame
   def move(player, dice1, dice2)
     raise Exception.new("#{player.name} is not playing in this game") unless is_playing?(player)
 
-    current_position = player.position
     player.move(dice1 + dice2)
 
-    message = "#{player.name} tira #{dice1}, #{dice2}. #{player.name} muove da #{current_position} a #{player.position}"
+    message = "#{player.name} tira #{dice1}, #{dice2}. #{player.name} muove da #{player.previous_position} a #{player.position}"
     message << ". #{player.name} vince!!" if player.wins?
-
+    message << ". #{player.name} Rimbalza! Pippo torna a #{player.bounced_position}" if player.bounced?
+    
     message
   end
 

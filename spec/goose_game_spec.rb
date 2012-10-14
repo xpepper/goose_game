@@ -62,4 +62,13 @@ describe GooseGame do
     end
   end
 
+  context "Bounce" do
+    it "bounces the player who exceeds 63" do
+      game.add_player(pippo)
+      game.move(pippo, 60, 0)
+
+      game.move(pippo, 3, 2).should == "Pippo tira 3, 2. Pippo muove da 60 a 63. Pippo Rimbalza! Pippo torna a 61"
+    end
+  end
+
 end
