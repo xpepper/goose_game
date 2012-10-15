@@ -4,6 +4,7 @@ require 'rubygems'
 require 'rspec'
 
 require_relative '../dice'
+require_relative "../random_sequence"
 
 describe Dice do
 
@@ -21,7 +22,7 @@ describe Dice do
 
   describe "#initialize" do
     it "build a random dice rolls when the dice rolls is not given" do
-      Dice.any_instance.stub(:sequence_builder).and_return(stub(sequence_of_length: [1,2]))
+      RandomSequence.any_instance.stub(:sequence_of_length).and_return([1,2])
       dice = Dice.new
 
       dice.roll.should == 3
