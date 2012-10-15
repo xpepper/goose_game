@@ -9,10 +9,13 @@ class Player
     @positions = [0]
   end
 
-  def position
-    return VICTORY_SQUARE if bounced?
+  def move(step)
+    new_position = @positions.last + step
 
-    say(@positions.last)
+    @bounced = should_bounce?(new_position)
+    new_position = bounces(new_position) if bounced?
+
+    @positions << new_position
   end
 
   def bounced_position
@@ -20,20 +23,14 @@ class Player
     position
   end
 
-  def previous_position
-    say(@positions[-2])
+  def position
+    return VICTORY_SQUARE if bounced?
+
+    say(@positions.last)
   end
 
-  def move(step)
-    new_position = @positions.last + step
-    if should_bounce?(new_position)
-      new_position = bounces(new_position)
-      @bounced = true
-    else
-      @bounced = false
-    end
-
-    @positions << new_position
+  def previous_position
+    say(@positions[-2])
   end
 
   def wins?
