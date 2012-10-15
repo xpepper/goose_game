@@ -8,10 +8,10 @@ class Player
 
   def position
     return 63 if bounced?
-    
+
     say(@positions.last)
   end
-  
+
   def bounced_position
     @bounced = false if bounced?
     position
@@ -23,7 +23,7 @@ class Player
 
   def move(step)
     new_position = @positions.last + step
-    if new_position > 63
+    if should_bounce?(new_position)
       new_position = bounces(new_position)
       @bounced = true
     else
@@ -40,7 +40,7 @@ class Player
   def bounced?
     @bounced
   end
-    
+
   def ==(other)
     return false unless self.class == other.class
     return true if self.name == other.name
@@ -49,11 +49,15 @@ class Player
 
   private
 
+  def should_bounce?(position)
+    position > 63
+  end
+
   def bounces(new_position)
     63 - new_position % 63
   end
 
   def say(position)
-    position.nil? || position == 0 ? "Partenza" : position
+    position == 0 ? "Partenza" : position
   end
 end

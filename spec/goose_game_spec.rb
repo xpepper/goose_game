@@ -71,18 +71,18 @@ describe GooseGame do
       game.move(pippo, 3, 2).should == "Pippo tira 3, 2. Pippo muove da 60 a 63. Pippo Rimbalza! Pippo torna a 61"
     end
   end
-  
+
   context "Game auto-play feature" do
     let(:sequence_builder) { stub(sequence_of_length: [1, 2]) }
-    
+
     before(:each) do
       Dice.any_instance.stub(:sequence_builder).and_return(sequence_builder)
     end
-    
+
     it "throws the dice for the player" do
       game.add_player(pippo)
       game.move(pippo, 4, 0)
-      
+
       game.move(pippo).should == "Pippo tira 1, 2. Pippo muove da 4 a 7"
     end
   end

@@ -4,7 +4,7 @@ class Dice
     if dice.nil? || dice.empty?
       dice = sequence_builder.sequence_of_length(2)
     end
-    
+
     @dice ||= dice
   end
 
@@ -15,15 +15,15 @@ class Dice
   def say_rolls
     @dice.join(', ')
   end
-  
+
   def sequence_builder
     RandomSequence.new
   end
-  
+
   def method_name
     raise "no!"
   end
-  
+
 end
 
 class RandomSequence
