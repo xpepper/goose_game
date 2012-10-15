@@ -44,14 +44,14 @@ describe GooseGame do
     it "moves a player from start" do
       game.add_player(pippo)
 
-      game.move(pippo, 4,2).should == "Pippo tira 4, 2. Pippo muove da Partenza a 6"
+      game.move(pippo, 4,3).should == "Pippo tira 4, 3. Pippo muove da Partenza a 7"
     end
 
     it "moves a player" do
       game.add_player(pippo)
 
-      game.move(pippo, 4,2).should == "Pippo tira 4, 2. Pippo muove da Partenza a 6"
-      game.move(pippo, 2,3).should == "Pippo tira 2, 3. Pippo muove da 6 a 11"
+      game.move(pippo, 4,1).should == "Pippo tira 4, 1. Pippo muove da Partenza a 5"
+      game.move(pippo, 2,3).should == "Pippo tira 2, 3. Pippo muove da 5 a 10"
     end
   end
 
@@ -83,6 +83,19 @@ describe GooseGame do
       game.move(pippo, 4, 0)
 
       game.move(pippo).should == "Pippo tira 1, 2. Pippo muove da 4 a 7"
+    end
+  end
+
+  context "Square 6 is 'the bridge'" do
+    before(:each) do
+      RandomSequence.any_instance.stub(:sequence_of_length).and_return([1, 1])
+    end
+
+    it "moves the player from square 6 directly to square 12" do
+      game.add_player(pippo)
+      game.move(pippo, 4, 0)
+
+      game.move(pippo).should == "Pippo tira 1, 1. Pippo muove da 4 a Il Ponte. Pippo salta al 12"
     end
   end
 
