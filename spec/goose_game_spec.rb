@@ -5,6 +5,7 @@ require 'rspec'
 
 require_relative '../goose_game'
 require_relative '../player'
+require_relative '../dice'
 
 describe GooseGame do
 
@@ -72,7 +73,13 @@ describe GooseGame do
   end
   
   context "Game auto-play feature" do
-    xit "throws the dice for the player" do
+    let(:sequence_builder) { stub(sequence_of_length: [1, 2]) }
+    
+    before(:each) do
+      Dice.any_instance.stub(:sequence_builder).and_return(sequence_builder)
+    end
+    
+    it "throws the dice for the player" do
       game.add_player(pippo)
       game.move(pippo, 4, 0)
       

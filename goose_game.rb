@@ -13,15 +13,18 @@ class GooseGame
     "Giocatori: #{@players.map(&:name).join(', ')}"
   end
 
-  def move(player, *dice)
+  def move(player, *dice_roll)
     raise Exception.new("#{player.name} is not playing in this game") unless is_playing?(player)
 
-    player.move(dice.sum)
+    dice = Dice.new(*dice_roll)
+    step = dice.roll
 
-    message = "#{player.name} tira #{dice.join(', ')}. #{player.name} muove da #{player.previous_position} a #{player.position}"
+    player.move(step)
+
+    message = "#{player.name} tira #{dice.say_rolls}. #{player.name} muove da #{player.previous_position} a #{player.position}"
     message << ". #{player.name} vince!!" if player.wins?
     message << ". #{player.name} Rimbalza! Pippo torna a #{player.bounced_position}" if player.bounced?
-    
+
     message
   end
 
@@ -33,11 +36,5 @@ class GooseGame
 
   def already_present(player)
     "#{player.name}: giocatore già presente"
-  end
-end
-
-class Array
-  def sum
-    inject(0, &:+) 
   end
 end
