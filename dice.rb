@@ -10,7 +10,7 @@ class Dice
     @dice = dice
   end
 
-  def roll
+  def sum
     @dice.sum
   end
 

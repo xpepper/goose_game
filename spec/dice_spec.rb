@@ -10,7 +10,7 @@ describe Dice do
 
   describe "#sum" do
     it "sums the dice" do
-      Dice.new(1,2).roll.should == 3
+      Dice.new(1,2).sum.should == 3
     end
   end
 
@@ -22,10 +22,10 @@ describe Dice do
 
   describe "#initialize" do
     it "build a random dice rolls when the dice rolls is not given" do
-      RandomSequence.any_instance.stub(:sequence_of_length).and_return([1,2])
+      RandomSequence.any_instance.stub(:sequence_of_length).and_return([4,5])
       dice = Dice.new
 
-      dice.roll.should == 3
+      dice.sum.should == 4+5
     end
 
   end

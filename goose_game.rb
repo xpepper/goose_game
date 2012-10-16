@@ -17,7 +17,7 @@ class GooseGame
     raise Exception.new("#{player.name} is not playing in this game") unless is_playing?(player)
 
     dice = Dice.new(*dice_roll)
-    step = dice.roll
+    step = dice.sum
 
     player.move(step)
 
