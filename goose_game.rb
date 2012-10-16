@@ -27,7 +27,8 @@ class GooseGame
 
     player.post_move_actions
 
-    message << ". #{player.name} salta al 12" if player.jumped_on_bridge?
+    message << ". #{player.name} salta al #{Player::BRIDGE_SQUARE}" if player.jumped_on_bridge?
+    message << ", oca. #{player.name} muove di nuovo e va a #{player.position}" if player.jumped_on_goose?
 
     message
   end

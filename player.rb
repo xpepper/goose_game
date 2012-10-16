@@ -10,7 +10,8 @@ class Player
   end
 
   def move(step)
-    new_position = @positions.last + step
+    @step = step
+    new_position = current_position + @step
 
     @bounced = should_bounce?(new_position)
     new_position = bounces(new_position) if bounced?
@@ -26,7 +27,7 @@ class Player
   def position
     return VICTORY_SQUARE if bounced?
 
-    say(@positions.last)
+    say(current_position)
   end
 
   def previous_position
@@ -34,7 +35,7 @@ class Player
   end
 
   def wins?
-    @positions.last == VICTORY_SQUARE
+    current_position == VICTORY_SQUARE
   end
 
   def bounced?
@@ -42,24 +43,44 @@ class Player
   end
 
   def on_bridge?
-    @positions.last == 6
+    @on_bridge = current_position == 6
+
+    @on_bridge
   end
 
   def jumped_on_bridge?
-    @positions.last == BRIDGE_SQUARE
+    jumped_on_bridge = @on_bridge.nil? ? false : @on_bridge
+    @on_bridge = false
+    jumped_on_bridge
   end
 
   def post_move_actions
     move(6) if on_bridge?
+    move(last_step) if on_goose?
+  end
+
+  def on_goose?
+    [5, 9, 14, 23, 27, 32, 36, 41, 45, 50, 54, 59].include?(current_position)
+  end
+
+  def jumped_on_goose?
+    [5, 9, 14, 23, 27, 32, 36, 41, 45, 50, 54, 59].include?(@positions[-2])
   end
 
   def ==(other)
     return false unless self.class == other.class
     return true if self.name == other.name
   end
-
-
+  
   private
+  
+  def current_position
+    @positions.last
+  end
+
+  def last_step
+    @step || 0
+  end
 
   def should_bounce?(position)
     position > VICTORY_SQUARE
