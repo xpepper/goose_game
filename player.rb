@@ -49,7 +49,7 @@ class Player
     @positions.last == BRIDGE_SQUARE
   end
 
-  def post_roll_actions
+  def post_move_actions
     move(6) if on_bridge?
   end
 

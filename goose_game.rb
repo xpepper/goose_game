@@ -25,7 +25,7 @@ class GooseGame
     message << ". #{player.name} vince!!" if player.wins?
     message << ". #{player.name} Rimbalza! Pippo torna a #{player.bounced_position}" if player.bounced?
 
-    player.post_roll_actions
+    player.post_move_actions
 
     message << ". #{player.name} salta al 12" if player.jumped_on_bridge?
 
