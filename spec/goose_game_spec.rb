@@ -1,8 +1,5 @@
 # encoding: UTF-8
 
-require 'rubygems'
-require 'rspec'
-
 require_relative '../goose_game'
 require_relative '../player'
 require_relative '../dice'

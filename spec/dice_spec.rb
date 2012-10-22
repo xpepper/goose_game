@@ -1,8 +1,5 @@
 # encoding: UTF-8
 
-require 'rubygems'
-require 'rspec'
-
 require_relative '../dice'
 require_relative "../random_sequence"
 
