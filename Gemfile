@@ -1,5 +1,4 @@
-source :gemcutter
-source 'http://gems.github.com'
+source 'https://rubygems.org'
 
 gem 'bundler'
 gem 'rake'
