@@ -12,7 +12,7 @@ describe Player do
     it "wins when player is in square 63" do
       player.move(63)
 
-      player.wins?.should be_true
+      expect(player.wins?).to be_truthy
     end
   end
   
@@ -20,7 +20,7 @@ describe Player do
     it "tells the player position" do
       player.move(23)
 
-      player.position.should == 23
+      expect(player.position).to eq(23)
     end
   end
   
